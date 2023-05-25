@@ -1,13 +1,17 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { loadEnv } from 'vite'
 import type { UserConfig, ConfigEnv } from 'vite'
 import { wrapperEnv } from './build/utils'
 import { resolve } from 'path'
 import { createVitePlugins } from './build/vite/plugin'
 
-function pathResolve(dir: string) {
-  return resolve(process.cwd(), '.', dir)
+/** 路径查找 */
+const pathResolve = (dir: string): string => {
+  return resolve(__dirname, '.', dir)
+}
+
+/** 设置别名 */
+const alias: Record<string, string> = {
+  '@': pathResolve('src')
 }
 
 // https://vitejs.dev/config/
@@ -25,18 +29,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
   return {
     root,
     resolve: {
-      alias: [
-        // /@/xxxx => src/xxxx
-        {
-          find: /\/@\//,
-          replacement: pathResolve('src') + '/'
-        },
-        // /#/xxxx => types/xxxx
-        {
-          find: /\/#\//,
-          replacement: pathResolve('types') + '/'
-        }
-      ]
+      alias
     },
     plugins: createVitePlugins(viteEnv, isBuild),
     server: {

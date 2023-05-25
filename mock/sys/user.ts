@@ -6,8 +6,9 @@ export default [
     response: () => {
       return {
         code: 200,
+        message: '请求成功！',
         data: {
-          nickname: '@cname',
+          name: '@cname',
           age: '@integer(10-100)',
           uid: '@id',
           url: '@image',
@@ -17,31 +18,34 @@ export default [
           mobile_phone: '@phone',
           email: '@email',
           region: '@region',
-          menus: [
-            {
-              menu_name: '一级导航',
-              id: '@id',
-              code: 'Nav1',
-              children: [
-                {
-                  code: 'about',
-                  menu_url: 'views/about',
-                  access_permissions: '["about"]',
-                  children: [],
-                  menu_name: '测试1',
-                  id: '@id'
-                },
-                {
-                  code: 'home',
-                  menu_url: 'views/home',
-                  access_permissions: '["home"]',
-                  children: [],
-                  menu_name: '测试2',
-                  id: '@id'
-                }
-              ]
-            }
-          ]
+          roles: ['admin', 'common']
+        }
+      }
+    }
+  },
+  {
+    url: '/login',
+    method: 'post',
+    response: ({ body }) => {
+      if (body.username === 'admin') {
+        return {
+          code: 200,
+          message: '请求成功',
+          data: {
+            accessToken: 'eyJhbGciOiJIUzUxMiJ9.admin',
+            refreshToken: 'eyJhbGciOiJIUzUxMiJ9.adminRefresh',
+            expires: '2023/10/30 00:00:00'
+          }
+        }
+      } else {
+        return {
+          code: 200,
+          message: '请求成功',
+          data: {
+            accessToken: 'eyJhbGciOiJIUzUxMiJ9.common',
+            refreshToken: 'eyJhbGciOiJIUzUxMiJ9.commonRefresh',
+            expires: '2023/10/30 00:00:00'
+          }
         }
       }
     }

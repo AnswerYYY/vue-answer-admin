@@ -6,7 +6,7 @@ export function isProdFn(mode: string): boolean {
   return mode === 'production'
 }
 
-// Read all environment variable configuration files to process.env
+// 读取环境变量配置文件.env并处理返回正确格式
 export function wrapperEnv(envConf: Recordable): ViteEnv {
   const ret: any = {}
 
