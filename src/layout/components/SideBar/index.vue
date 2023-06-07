@@ -9,25 +9,7 @@
         :default-active="useRoute().path"
         text-color="#fff"
       >
-        <template v-for="menu in menus" :key="menu.path">
-          <el-sub-menu v-if="menu.children && menu.children.length > 1" :index="menu.path">
-            <template #title>
-              <span>{{ menu.meta?.title }}</span>
-            </template>
-            <el-menu-item v-for="item in menu.children" :index="item.path" :key="item.path">{{
-              item.meta?.title
-            }}</el-menu-item>
-          </el-sub-menu>
-          <el-menu-item
-            v-else-if="menu.children && menu.children.length === 1"
-            :index="menu.children[0].path"
-            :key="menu.children[0].path"
-            >{{ menu.children[0].meta?.title }}</el-menu-item
-          >
-          <el-menu-item v-else :index="menu.path" :key="menu.path">{{
-            menu.meta?.title
-          }}</el-menu-item>
-        </template>
+        <SideBarItem :menus="menus" />
       </el-menu>
     </el-scrollbar>
   </el-aside>
@@ -37,6 +19,7 @@
   import { usePermissionStoreHook } from '@/store/modules/permission'
   import { filterHiddenRouter } from '@/router/utils'
   import { useRoute } from 'vue-router'
+  import SideBarItem from './SideBarItem.vue'
   const menus = filterHiddenRouter(usePermissionStoreHook().completeMenus)
 </script>
 <style lang="scss" scoped>

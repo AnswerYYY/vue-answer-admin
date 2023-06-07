@@ -1,23 +1,26 @@
 <template>
   <el-header>
     layout
-    <el-button type="primary" size="default" @click="handleLogOut">退出登录</el-button>
-    <el-button type="primary" size="default" @click="toggleDark()">{{
-      isDark ? 'Dark' : 'Light'
+    <el-button type="primary" size="default" @click="handleLogOut"
+      >退出登录{{ useSettingStoreHook().isDark }}</el-button
+    >
+    <el-button type="primary" size="default" @click="handleSwitchDarkTheme">{{
+      useSettingStoreHook().isDark ? 'Dark' : 'Light'
     }}</el-button>
-    <el-color-picker v-model="color" @change="setColor" />
+    <el-color-picker
+      v-model="useSettingStoreHook().primaryColor"
+      :predefine="useTheme().predefineColors"
+      @change="setColor"
+    />
   </el-header>
 </template>
 
 <script lang="ts" setup>
-  import { useDark, useToggle } from '@vueuse/core'
+  import { useSettingStoreHook } from '@/store/modules/settings'
   import { useUserStoreHook } from '@/store/modules/user'
   import { useRouter } from 'vue-router'
-  import { darken, lighten } from '@/utils/browser-utils'
-  import { ref } from 'vue'
+  import useTheme from '@/hooks/useTheme'
   const router = useRouter()
-  const isDark = useDark()
-  const toggleDark = useToggle(isDark)
   function handleLogOut() {
     useUserStoreHook()
       .logOut()
@@ -25,21 +28,12 @@
         router.replace('/login')
       })
   }
-  const color = ref('#409EFF')
-  function setColor() {
-    document.documentElement.style.setProperty('--el-color-primary', color.value)
-    for (let i = 1; i <= 2; i++) {
-      setPropertyPrimary('dark', i, color.value)
-    }
-    for (let i = 1; i <= 9; i++) {
-      setPropertyPrimary('light', i, color.value)
-    }
+  function setColor(val: string) {
+    useTheme().changePrimary(val)
   }
-  function setPropertyPrimary(mode: string, i: number, color: string) {
-    document.documentElement.style.setProperty(
-      `--el-color-primary-${mode}-${i}`,
-      mode === 'dark' ? darken(color, i / 10) : lighten(color, i / 10)
-    )
+  function handleSwitchDarkTheme() {
+    useSettingStoreHook().setSettings('isDark', !useSettingStoreHook().isDark)
+    useTheme().switchDark()
   }
 </script>
 <style lang="scss" scoped></style>

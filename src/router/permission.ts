@@ -3,7 +3,7 @@ import NProgress from '@/utils/nprogress'
 import { useUserStoreHook } from '@/store/modules/user'
 import { isEmpty } from '@/utils/util'
 import { usePermissionStoreHook } from '@/store/modules/permission'
-import { RouteRecordName } from 'vue-router'
+import { treeConvertToArr } from './utils'
 
 /** 登录页面 */
 const loginPath = '/login'
@@ -14,7 +14,6 @@ const allowList = [loginPath]
 router.beforeEach((to, from, next) => {
   console.log('FROM', from)
   console.log('TO', to)
-
   NProgress.start()
   const { token, roles } = useUserStoreHook()
   if (token) {
@@ -32,16 +31,9 @@ router.beforeEach((to, from, next) => {
               .then(() => {
                 resetRouter()
                 // 添加路由
-                usePermissionStoreHook().addRouters.forEach((e) => {
-                  if (!router.hasRoute(e.name as RouteRecordName)) router.addRoute(e)
+                treeConvertToArr(usePermissionStoreHook().addRouters).forEach((e) => {
+                  if (!router.hasRoute(e.name as any)) router.addRoute('Root', e)
                 })
-
-                // router.addRoute({
-                //   path: '/:pathMatch(.*)',
-                //   name: 'pathMatch',
-                //   redirect: '/404'
-                // })
-
                 // 请求带有 redirect 重定向时，登录自动重定向到该地址
                 const redirect = decodeURIComponent((from.query?.redirect as string) || to.path)
                 if (to.path === redirect) {

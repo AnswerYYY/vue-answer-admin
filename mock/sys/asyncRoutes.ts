@@ -10,7 +10,6 @@ import { MockMethod } from 'vite-plugin-mock'
 const systemRouter = {
   path: '/system',
   name: 'System',
-  component: 'Layout',
   meta: {
     title: '系统管理'
   },
@@ -41,7 +40,65 @@ const systemRouter = {
     }
   ]
 }
-
+const threeRouter = {
+  path: '/menu',
+  name: 'Menu',
+  meta: {
+    title: '菜单嵌套'
+  },
+  children: [
+    {
+      path: '/menu/menu1',
+      component: '/three/list/index',
+      name: 'menu1',
+      meta: {
+        title: '菜单1'
+      }
+    },
+    {
+      path: '/menu/menu2',
+      name: 'menu2',
+      meta: {
+        title: '菜单2'
+      },
+      children: [
+        {
+          path: '/menu/menu2-1',
+          name: 'Menu2-1',
+          meta: {
+            title: '菜单2-1'
+          },
+          children: [
+            {
+              path: '/menu/menu2-1/1',
+              component: '/three/list/index',
+              name: 'Menu2-1-1',
+              meta: {
+                title: '菜单2-1-1'
+              }
+            },
+            {
+              path: '/menu/menu2-1/2',
+              component: '/three/list/index',
+              name: 'Menu2-1-2',
+              meta: {
+                title: '菜单2-1-2'
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+const test = {
+  path: '/test',
+  component: '/three/list/index',
+  name: 'Test',
+  meta: {
+    title: '单页'
+  }
+}
 export default [
   {
     url: '/api/getAsyncRoutes',
@@ -50,7 +107,7 @@ export default [
       return {
         code: 200,
         message: '请求成功',
-        data: [systemRouter]
+        data: [systemRouter, threeRouter, test]
       }
     }
   }

@@ -6,7 +6,9 @@
 </template>
 
 <script setup lang="ts">
-  import router from '@/router'
+  import { useRouter } from 'vue-router'
+  const router = useRouter()
+  console.log(router.getRoutes())
 </script>
 
 <style scoped></style>

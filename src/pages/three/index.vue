@@ -1,5 +1,8 @@
 <template>
-  <div> user </div>
+  <div>
+    124515
+    <router-view />
+  </div>
 </template>
 
 <script lang="ts" setup></script>

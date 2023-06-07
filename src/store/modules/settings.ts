@@ -1,14 +1,16 @@
 import { store } from '@/store'
 import { defineStore } from 'pinia'
-
-export interface settingType {
-  isDark: boolean
-}
+import { globalSettings } from '@/config'
 
 export const useSettingStore = defineStore('setting', {
-  state: (): settingType => ({
-    isDark: false
-  }),
+  state: () => {
+    return globalSettings
+  },
+  actions: {
+    setSettings(...args: ObjToKeyValArray<globalSettings>) {
+      this.$patch({ [args[0]]: args[1] })
+    }
+  },
   persist: {
     key: 'settings'
   }

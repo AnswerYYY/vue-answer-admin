@@ -32,15 +32,20 @@ export function treeConvertToArr(routesList: RouteRecordRaw[]) {
 
 // 一维数组处理成多级嵌套数组（三级及以上的路由全部拍成二级，keep-alive 只支持到二级缓存）
 export function arrConvertToTree(routesList: RouteRecordRaw[]) {
-  const res: any[] = [{ children: [] }]
+  const res: RouteRecordRaw[] = []
+
   routesList.forEach((e) => {
     if (e.name === 'Root') {
       res[0] = {
-        ...e,
-        children: res[0].children
+        component: e.component,
+        name: e.name,
+        path: e.path,
+        redirect: e.redirect,
+        meta: e.meta,
+        children: []
       }
     } else {
-      res[0].children?.push({ ...e })
+      res[0]?.children?.push({ ...e })
     }
   })
   return res
@@ -112,8 +117,8 @@ export function generator(routers: any[]): RouteRecordRaw[] {
       e.component = Layout
     } else {
       const index = e.component
-        ? modulesRoutesKeys.findIndex((ev) => ev.includes(e.component as any))
-        : modulesRoutesKeys.findIndex((ev) => ev.includes(e.path))
+        ? modulesRoutesKeys.findIndex((ev) => ev === `/src/pages${e.component}.vue`)
+        : modulesRoutesKeys.findIndex((ev) => ev === `/src/pages${e.path}.vue`)
       e.component = modulesRoutes[modulesRoutesKeys[index]]
     }
     if (e.children && e.children.length) {
