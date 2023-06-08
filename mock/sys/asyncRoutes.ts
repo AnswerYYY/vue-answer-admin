@@ -11,7 +11,8 @@ const systemRouter = {
   path: '/system',
   name: 'System',
   meta: {
-    title: '系统管理'
+    title: '系统管理',
+    roles: ['admin']
   },
   children: [
     {

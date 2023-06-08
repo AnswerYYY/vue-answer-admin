@@ -1,20 +1,24 @@
 <template>
-  <el-container class="layout">
-    <Sidebar />
-    <el-container direction="vertical">
-      <NavigationBar />
-      <AppMain />
-      <Footer />
-    </el-container>
-  </el-container>
+  <component :is="LayoutComponents[useSettingStoreHook().layout]" />
 </template>
 
 <script lang="ts" setup>
-  import { AppMain, NavigationBar, Sidebar, Footer } from './components'
+  defineOptions({
+    name: 'LayoutIndex'
+  })
+  import { type Component } from 'vue'
+  import { LayoutVertical, LayoutClassic, LayoutTransverse, LayoutColumns } from './Layouts'
+  import { LayoutType } from '@/config'
+  import { useSettingStoreHook } from '@/store/modules/settings'
+  const LayoutComponents: Record<LayoutType, Component> = {
+    vertical: LayoutVertical,
+    classic: LayoutClassic,
+    transverse: LayoutTransverse,
+    columns: LayoutColumns
+  }
 </script>
 <style lang="scss" scoped>
   .layout {
-    width: 100vw;
-    height: 100vh;
+    min-width: 730px;
   }
 </style>

@@ -4,7 +4,7 @@ import { globalSettings } from '@/config'
 
 export const useSettingStore = defineStore('setting', {
   state: () => {
-    return globalSettings
+    return Object.assign({}, globalSettings)
   },
   actions: {
     setSettings(...args: ObjToKeyValArray<globalSettings>) {

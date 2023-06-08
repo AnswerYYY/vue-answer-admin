@@ -1,6 +1,8 @@
-import { default_primary } from '@/config'
+import { default_primary, globalSettings } from '@/config'
 import { useSettingStoreHook } from '@/store/modules/settings'
 import { getDarkColor, getLightColor } from '@/utils/color'
+
+export type GreyOrWeakType = 'grey' | 'weak'
 
 const useTheme = () => {
   const predefineColors = [
@@ -39,14 +41,47 @@ const useTheme = () => {
     }
     useSettingStoreHook().setSettings('primaryColor', color)
   }
+
+  // 灰色和弱色切换
+  const changeGreyOrWeak = (type: GreyOrWeakType, value: boolean) => {
+    const body = document.body as HTMLElement
+    if (!value) return body.removeAttribute('style')
+    const styles: Record<GreyOrWeakType, string> = {
+      grey: 'filter: grayscale(1)',
+      weak: 'filter: invert(80%)'
+    }
+    body.setAttribute('style', styles[type])
+    const propName = type === 'grey' ? 'isWeak' : 'isGrey'
+    useSettingStoreHook().setSettings(propName, false)
+  }
+
   const initTheme = () => {
     switchDark()
+    if (useSettingStoreHook().isGrey) {
+      changeGreyOrWeak('grey', true)
+    }
+    if (useSettingStoreHook().isWeak) {
+      changeGreyOrWeak('weak', true)
+    }
+  }
+  const resetTheme = () => {
+    window.localStorage.removeItem('settings')
+    let key: keyof globalSettings
+    for (key in globalSettings) {
+      const value = globalSettings[key]
+      useSettingStoreHook().setSettings(key, value as any)
+    }
+    changeGreyOrWeak('grey', false)
+    changeGreyOrWeak('weak', false)
+    initTheme()
   }
   return {
     initTheme,
     switchDark,
     changePrimary,
-    predefineColors
+    changeGreyOrWeak,
+    predefineColors,
+    resetTheme
   }
 }
 export default useTheme
