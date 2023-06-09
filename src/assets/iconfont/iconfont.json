@@ -1,0 +1,23 @@
+{
+  "id": "3619260",
+  "name": "测试",
+  "font_family": "anticon",
+  "css_prefix_text": "anticon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "2253534",
+      "name": "得分",
+      "font_class": "defen",
+      "unicode": "e634",
+      "unicode_decimal": 58932
+    },
+    {
+      "icon_id": "19818667",
+      "name": "考核管理",
+      "font_class": "kaoheguanli",
+      "unicode": "e633",
+      "unicode_decimal": 58931
+    }
+  ]
+}
