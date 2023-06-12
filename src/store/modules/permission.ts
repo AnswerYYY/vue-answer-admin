@@ -1,17 +1,13 @@
 import { store } from '@/store'
 import { defineStore } from 'pinia'
 import { constantMenus } from '@/router'
-import { RouteRecordRaw } from 'vue-router'
 import { getAsyncRoutes } from '@/api/routes'
 import { filterAsyncRouter, generator } from '@/router/utils'
 import { clone } from 'lodash'
-export interface permissionType {
-  constantMenus: RouteRecordRaw[]
-  addRouters: RouteRecordRaw[]
-  completeMenus: RouteRecordRaw[]
-}
+import { PermissionState } from './types'
+
 export const usePermissionStore = defineStore('permission', {
-  state: (): permissionType => ({
+  state: (): PermissionState => ({
     // 静态路由
     constantMenus,
     // 动态添加路由

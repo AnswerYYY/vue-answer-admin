@@ -1,13 +1,13 @@
 <template>
   <div>
-    <div> role </div>
+    <div> Menu2-1-1 这个不缓存</div>
     <el-input v-model="input" placeholder="测试缓存" size="normal" clearable />
   </div>
 </template>
 
 <script lang="ts" setup>
   defineOptions({
-    name: 'Role'
+    name: 'Menu211'
   })
   import { ref } from 'vue'
   const input = ref<string>('')

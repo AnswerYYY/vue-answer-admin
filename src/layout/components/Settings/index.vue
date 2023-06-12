@@ -90,6 +90,10 @@
         <span>页脚</span>
         <el-switch v-model="footer" @change="setSettings('footer', !!$event)" />
       </div>
+      <div class="settings-item flex justify-between items-center my-4">
+        <span>全局缓存</span>
+        <el-switch v-model="allKeepAlive" @change="handleAllKeepAlive" />
+      </div>
       <el-button
         class="w-full mt-3"
         :icon="Refresh"
@@ -109,13 +113,19 @@
   import useTheme from '@/hooks/useTheme'
   import { storeToRefs } from 'pinia'
   import { LayoutType } from '@/config'
+  import { useKeepAliveStoreHook } from '@/store/modules/keepAlive'
 
   const visible = ref(false)
-  const { isGrey, isWeak, primaryColor, footer, layout } = storeToRefs(useSettingStoreHook())
+  const { isGrey, isWeak, primaryColor, footer, layout, allKeepAlive } = storeToRefs(
+    useSettingStoreHook()
+  )
   const { setSettings } = useSettingStoreHook()
   const { changeGreyOrWeak, changePrimary, predefineColors, resetTheme } = useTheme()
   const setLayout = (e: LayoutType) => {
     setSettings('layout', e)
+  }
+  const handleAllKeepAlive = () => {
+    useKeepAliveStoreHook().setKeepAliveNames()
   }
 </script>
 <style lang="scss" scoped>

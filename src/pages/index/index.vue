@@ -6,6 +6,9 @@
 </template>
 
 <script setup lang="ts">
+  defineOptions({
+    name: 'Welcome'
+  })
   import { getUserInfo } from '@/api/user'
   const title = import.meta.env.VITE_GLOB_APP_TITLE
   getUserInfo()

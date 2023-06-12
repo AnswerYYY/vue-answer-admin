@@ -1,14 +1,10 @@
 import { store } from '@/store'
 import { defineStore } from 'pinia'
 import { LoginResult, getUserInfo, userLogin } from '@/api/user'
-interface userTyoe {
-  token: String
-  refreshToken: String
-  roles: Array<String>
-  info: object
-}
+import { UserState } from './types'
+
 export const useUserStore = defineStore('user', {
-  state: (): userTyoe => ({
+  state: (): UserState => ({
     token: '',
     refreshToken: '',
     // 页面级别权限
@@ -16,7 +12,7 @@ export const useUserStore = defineStore('user', {
     info: {}
   }),
   getters: {
-    GET_ROLES(): userTyoe['roles'] {
+    GET_ROLES(): UserState['roles'] {
       return this.roles
     }
   },

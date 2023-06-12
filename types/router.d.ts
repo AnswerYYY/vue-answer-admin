@@ -38,5 +38,9 @@ declare module 'vue-router' {
      * 可以设置 alwaysShow: true，这样就会忽略之前定义的规则，一直显示根路由
      */
     alwaysShow?: boolean
+    /**
+     * 是否固定tab
+     */
+    isAffix?: boolean
   }
 }

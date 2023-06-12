@@ -1,5 +1,5 @@
 <template>
-  <template v-for="menu in menus" :key="menu.path">
+  <template v-for="menu in formattMenus" :key="menu.path">
     <el-sub-menu v-if="menu.children?.length && menu.children?.length >= 1" :index="menu.path">
       <template #title>
         <el-icon color="#fff">
@@ -19,6 +19,18 @@
 </template>
 
 <script lang="ts" setup>
-  defineProps<{ menus: any[] }>()
+  import { computed } from 'vue'
+  import lodash from 'lodash'
+  const props = defineProps<{ menus: any[] }>()
+  const formattMenus = computed(() => {
+    const menus = lodash.cloneDeep(props.menus)
+    return menus.map((e) => {
+      // 子菜单为一项不显示层级
+      if (e.children && e.children.length === 1) {
+        return e.children[0]
+      }
+      return e
+    })
+  })
 </script>
 <style lang="scss" scoped></style>

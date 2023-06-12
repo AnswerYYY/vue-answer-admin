@@ -28,7 +28,8 @@ const systemRouter = {
       name: 'Role',
       meta: {
         title: '角色',
-        roles: ['admin']
+        roles: ['admin'],
+        keepAlive: true
       }
     },
     {
@@ -50,15 +51,16 @@ const threeRouter = {
   children: [
     {
       path: '/menu/menu1',
-      component: '/three/list/index',
-      name: 'menu1',
+      component: '/menu/menu1/index',
+      name: 'Menu1',
       meta: {
-        title: '菜单1'
+        title: '菜单1',
+        keepAlive: true
       }
     },
     {
       path: '/menu/menu2',
-      name: 'menu2',
+      name: 'Menu2',
       meta: {
         title: '菜单2'
       },
@@ -72,18 +74,19 @@ const threeRouter = {
           children: [
             {
               path: '/menu/menu2-1/1',
-              component: '/three/list/index',
-              name: 'Menu2-1-1',
+              component: '/menu/menu2/menu211',
+              name: 'Menu211',
               meta: {
                 title: '菜单2-1-1'
               }
             },
             {
               path: '/menu/menu2-1/2',
-              component: '/three/list/index',
-              name: 'Menu2-1-2',
+              component: '/menu/menu2/menu212',
+              name: 'Menu212',
               meta: {
-                title: '菜单2-1-2'
+                title: '菜单2-1-2',
+                keepAlive: true
               }
             }
           ]

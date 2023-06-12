@@ -19,7 +19,7 @@ export const getRouterHistory = (routerHistory: string): RouterHistory => {
 
 // 多级嵌套路由展开为一维数组
 export function treeConvertToArr(routesList: RouteRecordRaw[]) {
-  let res: any[] = []
+  let res: RouteRecordRaw[] = []
   routesList.forEach((e) => {
     if (e.children) {
       res = res.concat(treeConvertToArr(e.children))

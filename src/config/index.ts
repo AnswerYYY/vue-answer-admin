@@ -10,6 +10,7 @@ export interface globalSettings {
   assemblySize: AssemblySizeType
   footer: boolean
   isCollapse: boolean
+  allKeepAlive: boolean
 }
 
 export const globalSettings: globalSettings = {
@@ -21,5 +22,6 @@ export const globalSettings: globalSettings = {
   isWeak: false,
   assemblySize: 'default',
   footer: true,
-  isCollapse: false
+  isCollapse: false,
+  allKeepAlive: false
 }

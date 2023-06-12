@@ -14,7 +14,8 @@ export default {
       name: 'Welcome',
       component: () => import('@/pages/welcome/index.vue'),
       meta: {
-        title: '首页'
+        title: '首页',
+        isAffix: true
       }
     }
   ]
