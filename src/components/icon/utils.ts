@@ -48,10 +48,10 @@ export function getElementPlusIconfontNames() {
   })
 }
 // 获取iconfont
-export function getIconfontNames(url = '/src/assets/iconfont/iconfont.json') {
+export function getIconfontNames() {
   return new Promise<IconFontName[]>((resolve, reject) => {
     const iconfonts: IconFontName[] = []
-    import(url)
+    import(`../../assets/iconfont/iconfont.json`)
       .then((data) => {
         if (data) {
           const { glyphs } = data.default
@@ -66,9 +66,7 @@ export function getIconfontNames(url = '/src/assets/iconfont/iconfont.json') {
           reject('No Iconfont Icons')
         }
       })
-      .catch((err) => {
-        console.log(err)
-
+      .catch(() => {
         reject('No Iconfont Icons')
       })
   })

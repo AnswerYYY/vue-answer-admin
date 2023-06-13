@@ -12,6 +12,9 @@ import './router/permission' // permission control
 // Pinia
 import { setupStore } from './store'
 
+// 自定义指令
+import directives from '@/directives'
+
 // 通用样式
 import '@/styles/index.scss'
 
@@ -25,5 +28,5 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 // 挂载pinia
 setupStore(app)
 
-app.use(ElementPlus).use(router)
+app.use(ElementPlus).use(router).use(directives)
 app.mount('#app')

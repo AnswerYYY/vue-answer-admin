@@ -1,5 +1,6 @@
 import { createWebHashHistory, createWebHistory, RouteRecordRaw, RouterHistory } from 'vue-router'
 import router from '.'
+import { isString } from 'lodash'
 const Layout = () => import('@/layout/index.vue')
 
 // 加载全部页面
@@ -139,4 +140,15 @@ export function addPathMatch() {
       redirect: '/404'
     })
   }
+}
+
+/* 是否具有按钮权限 */
+export function hasAuth(val: string | string[]) {
+  if (!val) return false
+  const currentPageAuths = router.currentRoute.value.meta.auths
+  if (!currentPageAuths) return false
+  const isRoles = isString(val)
+    ? currentPageAuths.includes(val)
+    : val.every((item) => currentPageAuths.includes(item))
+  return isRoles
 }

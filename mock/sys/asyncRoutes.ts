@@ -96,11 +96,12 @@ const threeRouter = {
   ]
 }
 const test = {
-  path: '/test',
-  component: '/three/list/index',
-  name: 'Test',
+  path: '/btnauths',
+  component: '/auths/index',
+  name: 'BtnAuths',
   meta: {
-    title: '单页'
+    title: '按钮权限',
+    auths: ['btn_add', 'btn_edit', 'btn_delete', 'btn_import', 'btn_export']
   }
 }
 export default [

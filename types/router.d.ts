@@ -21,6 +21,10 @@ declare module 'vue-router' {
      */
     roles?: string[]
     /**
+     * 设置该路由的按钮权限，支持多个权限叠加
+     */
+    auths?: string[]
+    /**
      * 示例: activeMenu: "/xxx/xxx"，
      * 当设置了该属性进入路由时，则会高亮 activeMenu 属性对应的侧边栏。
      * 该属性适合使用在有 hidden: true 属性的路由上
