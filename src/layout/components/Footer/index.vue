@@ -12,6 +12,7 @@
     height: 30px;
     background-color: var(--el-bg-color);
     border-top: 1px solid var(--el-border-color-light);
+    padding: 10px 0;
     a {
       font-size: 14px;
       color: var(--el-text-color-secondary);

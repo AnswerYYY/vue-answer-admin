@@ -47,7 +47,7 @@ export const useTabsStore = defineStore('tabs', {
       })
     }
   }
-  // persist: { key: 'tabs' }
+  // persist: { key: 'tabs', storage: sessionStorage }
 })
 
 export function useTabsStoreHook() {

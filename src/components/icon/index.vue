@@ -14,10 +14,13 @@
       },
       color: {
         type: String,
-        default: '#000000'
+        default: 'inherit'
       }
     },
     setup(props) {
+      if (!props.name) {
+        return ''
+      }
       const iconStyle = computed((): CSSProperties => {
         const { size, color } = props
         let s = `${size.replace('px', '')}px`

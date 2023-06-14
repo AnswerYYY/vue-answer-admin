@@ -39,4 +39,8 @@
     overflow-x: hidden;
     background-color: var(--el-bg-color-page);
   }
+  .el-footer {
+    height: auto;
+    padding: 0;
+  }
 </style>

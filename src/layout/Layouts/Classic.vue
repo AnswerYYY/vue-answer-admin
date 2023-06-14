@@ -13,16 +13,12 @@
     <el-container direction="vertical">
       <Header />
       <AppMain />
-      <Footer v-if="footer" />
     </el-container>
   </el-container>
 </template>
 
 <script lang="ts" setup>
-  import { useSettingStoreHook } from '@/store/modules/settings'
-  import { AppMain, Footer, SubLogo, HeaderLeft, HeaderRight } from '../components'
-  import { storeToRefs } from 'pinia'
-  const { footer } = storeToRefs(useSettingStoreHook())
+  import { AppMain, SubLogo, HeaderLeft, HeaderRight } from '../components'
 </script>
 <style lang="scss" scoped>
   .layout {

@@ -2,15 +2,13 @@
   <template v-for="menu in formattMenus" :key="menu.path">
     <el-sub-menu v-if="menu.children?.length && menu.children?.length >= 1" :index="menu.path">
       <template #title>
-        <el-icon color="#fff">
-          <Menu />
-        </el-icon>
+        <Icon :name="menu.meta?.icon" size="20" />
         <span>{{ menu.meta?.title }}</span>
       </template>
       <SubMenu :menus="menu.children" />
     </el-sub-menu>
     <el-menu-item v-else :index="menu.path" :key="menu.path">
-      <el-icon color="#fff"> <Menu /> </el-icon>
+      <Icon :name="menu.meta?.icon" size="20" />
       <template #title>
         {{ menu.meta?.title }}
       </template>
@@ -19,6 +17,7 @@
 </template>
 
 <script lang="ts" setup>
+  import { Icon } from '@/components'
   import { computed } from 'vue'
   import lodash from 'lodash'
   const props = defineProps<{ menus: any[] }>()
@@ -33,4 +32,30 @@
     })
   })
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss">
+  .el-menu--collapse {
+    .is-active {
+      .el-sub-menu__title {
+        color: #ffffff !important;
+        background-color: var(--el-color-primary) !important;
+      }
+    }
+  }
+  .el-menu-item {
+    &:hover {
+      color: var(--el-menu-hover-text-color);
+    }
+    &.is-active {
+      color: var(--el-menu-active-color) !important;
+      background-color: var(--el-menu-active-bg-color) !important;
+      // &::before {
+      //   position: absolute;
+      //   top: 0;
+      //   bottom: 0;
+      //   width: 4px;
+      //   content: '';
+      //   background-color: var(--el-color-primary);
+      // }
+    }
+  }
+</style>

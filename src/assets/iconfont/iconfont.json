@@ -1,23 +1,44 @@
 {
-  "id": "3619260",
-  "name": "测试",
-  "font_family": "anticon",
-  "css_prefix_text": "anticon-",
+  "id": "4121289",
+  "name": "vue-answer-admiin",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
   "description": "",
   "glyphs": [
     {
-      "icon_id": "2253534",
-      "name": "得分",
-      "font_class": "defen",
-      "unicode": "e634",
-      "unicode_decimal": 58932
+      "icon_id": "5387515",
+      "name": "表格",
+      "font_class": "biaoge",
+      "unicode": "eaef",
+      "unicode_decimal": 60143
     },
     {
-      "icon_id": "19818667",
-      "name": "考核管理",
-      "font_class": "kaoheguanli",
-      "unicode": "e633",
-      "unicode_decimal": 58931
+      "icon_id": "5387728",
+      "name": "消息",
+      "font_class": "xiaoxi",
+      "unicode": "eb42",
+      "unicode_decimal": 60226
+    },
+    {
+      "icon_id": "5387546",
+      "name": "全局设置",
+      "font_class": "quanjushezhi",
+      "unicode": "eafb",
+      "unicode_decimal": 60155
+    },
+    {
+      "icon_id": "5387604",
+      "name": "取消全屏",
+      "font_class": "quxiaoquanping",
+      "unicode": "eb10",
+      "unicode_decimal": 60176
+    },
+    {
+      "icon_id": "5387606",
+      "name": "全屏",
+      "font_class": "quanping",
+      "unicode": "eb11",
+      "unicode_decimal": 60177
     }
   ]
 }

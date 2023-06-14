@@ -5,15 +5,13 @@ export default {
   name: 'Root',
   redirect: '/welcome',
   component: Layout,
-  meta: {
-    title: '首页'
-  },
   children: [
     {
       path: '/welcome',
       name: 'Welcome',
       component: () => import('@/pages/welcome/index.vue'),
       meta: {
+        icon: 'el-icon-promotion',
         title: '首页',
         isAffix: true
       }

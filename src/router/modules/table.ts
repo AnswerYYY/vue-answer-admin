@@ -6,7 +6,8 @@ export default {
   redirect: '/table/list',
   component: Layout,
   meta: {
-    title: '表格'
+    title: '表格',
+    icon: 'iconfont icon-biaoge'
   },
   children: [
     {

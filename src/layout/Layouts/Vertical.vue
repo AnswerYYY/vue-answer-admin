@@ -60,6 +60,10 @@
             width: 100%;
             overflow-x: hidden;
             border-right: none;
+            .el-menu--collapse .is-active .el-sub-menu__title {
+              color: #ffffff !important;
+              background-color: var(--el-color-primary) !important;
+            }
           }
         }
         .logo {
@@ -71,6 +75,7 @@
         }
       }
     }
+
     .el-header {
       box-sizing: border-box;
       display: flex;

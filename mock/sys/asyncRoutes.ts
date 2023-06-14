@@ -12,7 +12,8 @@ const systemRouter = {
   name: 'System',
   meta: {
     title: '系统管理',
-    roles: ['admin']
+    roles: ['admin'],
+    icon: 'iconfont icon-biaoge'
   },
   children: [
     {
@@ -46,7 +47,8 @@ const threeRouter = {
   path: '/menu',
   name: 'Menu',
   meta: {
-    title: '菜单嵌套'
+    title: '菜单嵌套',
+    icon: 'iconfont icon-biaoge'
   },
   children: [
     {
@@ -101,7 +103,8 @@ const test = {
   name: 'BtnAuths',
   meta: {
     title: '按钮权限',
-    auths: ['btn_add', 'btn_edit', 'btn_delete', 'btn_import', 'btn_export']
+    auths: ['btn_add', 'btn_edit', 'btn_delete', 'btn_import', 'btn_export'],
+    icon: 'iconfont icon-biaoge'
   }
 }
 export default [
