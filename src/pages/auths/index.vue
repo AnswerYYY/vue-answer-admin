@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="card-wrapper">
     <p>按钮权限</p>
     <el-alert
       class="mb-5"

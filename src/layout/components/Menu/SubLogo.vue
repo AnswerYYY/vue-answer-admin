@@ -18,7 +18,6 @@
   .logo {
     .logo-img {
       width: 28px;
-      object-fit: contain;
       margin-right: 6px;
     }
     .logo-text {

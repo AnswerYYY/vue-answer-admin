@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="card-wrapper">
     <div> Menu2-1-1 这个不缓存</div>
     <el-input v-model="input" placeholder="测试缓存" size="normal" clearable />
   </div>

@@ -1,9 +1,10 @@
 import { store } from '@/store'
 import { defineStore } from 'pinia'
 import { globalSettings } from '@/config'
+import piniaPersistConfig from '@/config/piniaPersist'
 
-export const useSettingStore = defineStore('setting', {
-  state: () => {
+export const useSettingStore = defineStore('settings', {
+  state: (): globalSettings => {
     return Object.assign({}, globalSettings)
   },
   actions: {
@@ -11,9 +12,7 @@ export const useSettingStore = defineStore('setting', {
       this.$patch({ [args[0]]: args[1] })
     }
   },
-  persist: {
-    key: 'settings'
-  }
+  persist: piniaPersistConfig('settings')
 })
 
 export function useSettingStoreHook() {

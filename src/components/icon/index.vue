@@ -14,7 +14,7 @@
       },
       color: {
         type: String,
-        default: 'inherit'
+        default: ''
       }
     },
     setup(props) {
@@ -26,7 +26,7 @@
         let s = `${size.replace('px', '')}px`
         return {
           fontSize: s,
-          color: color
+          color: color || undefined
         }
       })
 

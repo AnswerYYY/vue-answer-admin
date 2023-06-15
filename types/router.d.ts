@@ -6,16 +6,11 @@ declare module 'vue-router' {
      * 设置该路由在侧边栏和面包屑中展示的名字
      */
     title: string
-    /**
-     * 默认 true，如果设置为 false，则不会在面包屑中显示
-     */
-    breadcrumb?: boolean
     icon?: string
     /**
      * 默认 false，设置 true 的时候该路由不会在侧边栏出现
      */
     hidden?: boolean
-    rank?: number
     /**
      * 设置该路由进入的权限，支持多个权限叠加
      */
@@ -35,13 +30,6 @@ declare module 'vue-router' {
      * 默认为 false，为 true 时代表需要缓存，此时该路由和该页面都需要设置一致的 Name
      */
     keepAlive?: boolean
-    /**
-     * 当一个路由下面的 children 声明的路由大于 1 个时，自动会变成嵌套的模式，
-     * 只有一个时，会将那个子路由当做根路由显示在侧边栏，
-     * 若想不管路由下面的 children 声明的个数都显示你的根路由，
-     * 可以设置 alwaysShow: true，这样就会忽略之前定义的规则，一直显示根路由
-     */
-    alwaysShow?: boolean
     /**
      * 是否固定tab
      */

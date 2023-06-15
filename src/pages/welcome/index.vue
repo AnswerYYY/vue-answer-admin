@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="card-wrapper">
     <div>首页</div>
     <el-button type="" @click="router.push('/system/user/index')">user</el-button>
     <Icon name="local-zhaofangliang" size="30px" color="red" />

@@ -11,10 +11,18 @@
         <el-tab-pane
           v-for="item in tabsList"
           :key="item.path"
-          :label="item.title"
           :name="item.path"
           :closable="item.close"
-        />
+        >
+          <template #label>
+            <Icon
+              v-show="item.icon && settingsStore.tabsIcon"
+              class="tabs-icon mr-1"
+              :name="item.icon"
+            />
+            {{ item.title }}
+          </template>
+        </el-tab-pane>
       </el-tabs>
       <moreButton />
     </div>
@@ -35,6 +43,7 @@
   import { tabsMenuProps } from '@/store/modules/types'
   import { onMounted } from 'vue'
   import { TabPaneName, TabsPaneContext } from 'element-plus'
+  import { Icon } from '@/components'
   const route = useRoute()
   const router = useRouter()
   const tabsStore = useTabsStoreHook()
@@ -105,6 +114,47 @@
         position: absolute;
         top: 8px;
         right: 13px;
+      }
+      :deep(.el-tabs) {
+        .el-tabs__header {
+          box-sizing: border-box;
+          height: 40px;
+          padding: 0 10px;
+          margin: 0;
+          .el-tabs__nav-wrap {
+            position: absolute;
+            width: calc(100% - 110px);
+            .el-tabs__nav {
+              display: flex;
+              border: none;
+              .el-tabs__item {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: var(--el-text-color-secondary);
+                border: none;
+                .tabs-icon {
+                  margin: 1.5px 4px 0 0;
+                  font-size: 15px;
+                }
+                .is-icon-close {
+                  margin-top: 1px;
+                }
+                &.is-active {
+                  color: var(--el-color-primary);
+                  &::before {
+                    position: absolute;
+                    bottom: 0;
+                    width: 100%;
+                    height: 0;
+                    content: '';
+                    border-bottom: 2px solid var(--el-color-primary) !important;
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

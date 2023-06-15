@@ -48,14 +48,34 @@
     &.is-active {
       color: var(--el-menu-active-color) !important;
       background-color: var(--el-menu-active-bg-color) !important;
-      // &::before {
-      //   position: absolute;
-      //   top: 0;
-      //   bottom: 0;
-      //   width: 4px;
-      //   content: '';
-      //   background-color: var(--el-color-primary);
-      // }
+      &::before {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        content: '';
+        background-color: var(--el-color-primary);
+      }
+    }
+  }
+  .classic,
+  .vertical,
+  .transverse {
+    .el-menu-item {
+      &.is-active {
+        &::before {
+          left: 0;
+        }
+      }
+    }
+  }
+  .columns {
+    .el-menu-item {
+      &.is-active {
+        &::before {
+          right: 0;
+        }
+      }
     }
   }
 </style>

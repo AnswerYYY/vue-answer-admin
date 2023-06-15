@@ -11,7 +11,7 @@ export default {
       name: 'Welcome',
       component: () => import('@/pages/welcome/index.vue'),
       meta: {
-        icon: 'el-icon-promotion',
+        icon: 'iconfont icon-shouye',
         title: '首页',
         isAffix: true
       }

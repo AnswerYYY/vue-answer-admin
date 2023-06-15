@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="card-wrapper">
     <div> role </div>
     <el-input v-model="input" placeholder="测试缓存" size="normal" clearable />
   </div>

@@ -1,5 +1,6 @@
 <template>
   <component :is="LayoutComponents[useSettingStoreHook().layout]" />
+  <ThemeSettings />
 </template>
 
 <script lang="ts" setup>
@@ -10,6 +11,7 @@
   import { LayoutVertical, LayoutClassic, LayoutTransverse, LayoutColumns } from './Layouts'
   import { LayoutType } from '@/config'
   import { useSettingStoreHook } from '@/store/modules/settings'
+  import ThemeSettings from './components/Settings/index.vue'
   const LayoutComponents: Record<LayoutType, Component> = {
     vertical: LayoutVertical,
     classic: LayoutClassic,

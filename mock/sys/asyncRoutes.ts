@@ -13,7 +13,7 @@ const systemRouter = {
   meta: {
     title: '系统管理',
     roles: ['admin'],
-    icon: 'iconfont icon-biaoge'
+    icon: 'iconfont icon-diannao'
   },
   children: [
     {
@@ -21,7 +21,8 @@ const systemRouter = {
       name: 'User',
       meta: {
         title: '用户',
-        roles: ['admin']
+        roles: ['admin'],
+        icon: 'iconfont icon-qunzu'
       }
     },
     {
@@ -30,7 +31,8 @@ const systemRouter = {
       meta: {
         title: '角色',
         roles: ['admin'],
-        keepAlive: true
+        keepAlive: true,
+        icon: 'iconfont icon-gerentouxiang'
       }
     },
     {
@@ -38,7 +40,8 @@ const systemRouter = {
       name: 'Dept',
       meta: {
         title: '部门',
-        roles: ['admin']
+        roles: ['admin'],
+        icon: 'iconfont icon-shuzhuangtu'
       }
     }
   ]
@@ -48,7 +51,7 @@ const threeRouter = {
   name: 'Menu',
   meta: {
     title: '菜单嵌套',
-    icon: 'iconfont icon-biaoge'
+    icon: 'iconfont icon-caidan'
   },
   children: [
     {
@@ -104,7 +107,7 @@ const test = {
   meta: {
     title: '按钮权限',
     auths: ['btn_add', 'btn_edit', 'btn_delete', 'btn_import', 'btn_export'],
-    icon: 'iconfont icon-biaoge'
+    icon: 'iconfont icon-anquan'
   }
 }
 export default [

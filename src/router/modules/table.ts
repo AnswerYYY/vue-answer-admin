@@ -15,7 +15,8 @@ export default {
       name: 'TableList1',
       component: () => import('@/pages/table/index.vue'),
       meta: {
-        title: '表格列表'
+        title: '表格列表',
+        icon: 'iconfont icon-liebiao'
       }
     },
     {
@@ -23,7 +24,8 @@ export default {
       name: 'TableList2',
       component: () => import('@/pages/table/index.vue'),
       meta: {
-        title: '表格列表2'
+        title: '表格列表2',
+        icon: 'iconfont icon-liebiao'
       }
     }
   ]

@@ -1,5 +1,5 @@
 <template>
-  <div> user </div>
+  <div class="card-wrapper"> user </div>
 </template>
 
 <script lang="ts" setup></script>

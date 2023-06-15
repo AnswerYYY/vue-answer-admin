@@ -2,6 +2,7 @@ import { store } from '@/store'
 import { defineStore } from 'pinia'
 import { LoginResult, getUserInfo, userLogin } from '@/api/user'
 import { UserState } from './types'
+import piniaPersistConfig from '@/config/piniaPersist'
 
 export const useUserStore = defineStore('user', {
   state: (): UserState => ({
@@ -72,10 +73,7 @@ export const useUserStore = defineStore('user', {
       return Promise.resolve()
     }
   },
-  persist: {
-    key: 'user-info',
-    paths: ['token', 'refreshToken']
-  }
+  persist: piniaPersistConfig('user-info', ['token', 'refreshToken'])
 })
 
 export function useUserStoreHook() {
