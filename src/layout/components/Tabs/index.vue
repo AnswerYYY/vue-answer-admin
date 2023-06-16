@@ -61,7 +61,7 @@
   watch(
     () => route.path,
     () => {
-      tabsctivePath.value = route.path
+      tabsctivePath.value = route.fullPath
       const params: tabsMenuProps = {
         icon: route.meta.icon as string,
         title: route.meta.title,
@@ -101,7 +101,7 @@
   const handleTabRemove = (fullPath: TabPaneName) => {
     const name = tabsStore.tabsList.filter((item) => item.path === fullPath)[0].name || ''
     keepAliveStore.removeName(name)
-    tabsStore.removeTab(fullPath as string, fullPath === route.path)
+    tabsStore.removeTab(fullPath as string, fullPath === route.fullPath)
   }
 </script>
 <style lang="scss" scoped>

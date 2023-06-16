@@ -2,8 +2,8 @@ import { store } from '@/store'
 import { defineStore } from 'pinia'
 import { constantMenus } from '@/router'
 import { getAsyncRoutes } from '@/api/routes'
-import { filterAsyncRouter, generator } from '@/router/utils'
-import { clone } from 'lodash'
+import { filterAsyncRouter, generator, filterHiddenRouter } from '@/router/utils'
+import { cloneDeep } from 'lodash'
 import { PermissionState } from './types'
 
 export const usePermissionStore = defineStore('permission', {
@@ -24,9 +24,9 @@ export const usePermissionStore = defineStore('permission', {
       return new Promise((resolve, reject) => {
         getAsyncRoutes()
           .then((res) => {
-            const asyncRouters = generator(filterAsyncRouter(clone(res.data), roles))
+            const asyncRouters = generator(filterAsyncRouter(cloneDeep(res.data), roles))
             this.addRouters = asyncRouters
-            this.handleCompleteMenus(asyncRouters)
+            this.handleCompleteMenus(filterHiddenRouter(cloneDeep(asyncRouters)))
             resolve(asyncRouters)
           })
           .catch((err) => {

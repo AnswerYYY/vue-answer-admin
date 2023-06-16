@@ -4,7 +4,7 @@
     <router-view v-slot="{ Component, route }">
       <transition name="el-fade-in" mode="out-in">
         <keep-alive :include="useKeepAliveStoreHook().keepAliveNames">
-          <component :is="Component" v-if="!refreshIng" :key="route.path" />
+          <component :is="Component" v-if="!refreshIng" :key="route.fullPath" />
         </keep-alive>
       </transition>
     </router-view>

@@ -13,7 +13,7 @@ interface ViteEnv {
   /** 默认路径 */
   VITE_BASE_URL: string
   /** 路由模式 */
-  VITE_ROUTER_HISTORY: string
+  VITE_ROUTER_HISTORY: H5 | HASH
 }
 interface ApiResponseData<T> {
   code: number

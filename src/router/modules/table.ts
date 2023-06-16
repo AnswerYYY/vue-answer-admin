@@ -3,7 +3,7 @@ const Layout = () => import('@/layout/index.vue')
 export default {
   path: '/table',
   name: 'Table',
-  redirect: '/table/list',
+  redirect: '/table/list1',
   component: Layout,
   meta: {
     title: '表格',

@@ -20,12 +20,13 @@
   import { Icon } from '@/components'
   import { computed } from 'vue'
   import lodash from 'lodash'
-  const props = defineProps<{ menus: any[] }>()
+  import { RouteRecordRaw } from 'vue-router'
+  const props = defineProps<{ menus: RouteRecordRaw[] }>()
   const formattMenus = computed(() => {
     const menus = lodash.cloneDeep(props.menus)
     return menus.map((e) => {
       // 子菜单为一项不显示层级
-      if (e.children && e.children.length === 1) {
+      if (e.children && e.children.length === 1 && !e.meta?.alwaysShow) {
         return e.children[0]
       }
       return e

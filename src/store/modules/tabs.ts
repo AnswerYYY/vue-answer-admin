@@ -39,7 +39,16 @@ export const useTabsStore = defineStore('tabs', {
     },
     /* 设置tab title */
     async setTabTitle(title: string) {
-      const fullPath = location.hash.substring(1)
+      const history = import.meta.env.VITE_ROUTER_HISTORY
+      let fullPath = ''
+      const { pathname, search, hash } = location
+      if (history === 'H5') {
+        fullPath = pathname + search
+      } else {
+        fullPath = hash.substring(1)
+      }
+      console.log('fullPath', fullPath)
+
       this.tabsList.forEach((e) => {
         if (e.path === fullPath) {
           e.title = title

@@ -1,5 +1,6 @@
 import { nextTick } from 'vue'
 import * as elIcons from '@element-plus/icons-vue'
+import iconFont from '@/assets/iconfont/iconfont.json'
 export interface IconFontName {
   icon: string
   name: string
@@ -51,23 +52,17 @@ export function getElementPlusIconfontNames() {
 export function getIconfontNames() {
   return new Promise<IconFontName[]>((resolve, reject) => {
     const iconfonts: IconFontName[] = []
-    import(`../../assets/iconfont/iconfont.json`)
-      .then((data) => {
-        if (data) {
-          const { glyphs } = data.default
-          glyphs.forEach((e: any) => {
-            iconfonts.push({
-              name: e.name,
-              icon: `iconfont icon-${e.font_class}`
-            })
-          })
-          resolve(iconfonts)
-        } else {
-          reject('No Iconfont Icons')
-        }
+    if (iconFont) {
+      const { glyphs } = iconFont
+      glyphs.forEach((e: any) => {
+        iconfonts.push({
+          name: e.name,
+          icon: `iconfont icon-${e.font_class}`
+        })
       })
-      .catch(() => {
-        reject('No Iconfont Icons')
-      })
+      resolve(iconfonts)
+    } else {
+      reject('No Iconfont Icons')
+    }
   })
 }

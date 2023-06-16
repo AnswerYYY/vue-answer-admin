@@ -100,7 +100,7 @@ const threeRouter = {
     }
   ]
 }
-const test = {
+const BtnAuths = {
   path: '/btnauths',
   component: '/auths/index',
   name: 'BtnAuths',
@@ -108,6 +108,37 @@ const test = {
     title: '按钮权限',
     auths: ['btn_add', 'btn_edit', 'btn_delete', 'btn_import', 'btn_export'],
     icon: 'iconfont icon-anquan'
+  }
+}
+const Detail = {
+  path: '/detail',
+  name: 'DetailIndex',
+  meta: {
+    title: '测试详情',
+    icon: 'iconfont icon-anquan',
+    hidden: true
+  },
+  children: [
+    {
+      path: '/detail/test',
+      component: '/detail/index',
+      name: 'Detail',
+      meta: {
+        title: '详情页',
+        icon: 'iconfont icon-anquan',
+        hidden: true
+      }
+    }
+  ]
+}
+
+const IconSelector = {
+  path: '/iconSelector',
+  component: '/iconSelector/index',
+  name: 'IconSelector',
+  meta: {
+    title: '图标选择器',
+    icon: 'iconfont icon-biaoqing'
   }
 }
 export default [
@@ -118,7 +149,7 @@ export default [
       return {
         code: 200,
         message: '请求成功',
-        data: [systemRouter, threeRouter, test]
+        data: [systemRouter, threeRouter, BtnAuths, Detail, IconSelector]
       }
     }
   }

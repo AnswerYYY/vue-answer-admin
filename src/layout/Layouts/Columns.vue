@@ -66,7 +66,7 @@
   })
   const menus = usePermissionStoreHook().completeMenus.map((e) => {
     // 子菜单为一项不显示层级
-    if (e.children && e.children.length === 1) {
+    if (e.children && e.children.length === 1 && !e.meta?.alwaysShow) {
       return e.children[0]
     }
     return e
