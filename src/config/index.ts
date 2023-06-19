@@ -35,3 +35,6 @@ export const globalSettings: globalSettings = {
   tabs: true,
   tabsIcon: true
 }
+
+/** 登录页面 */
+export const loginPath = '/login'

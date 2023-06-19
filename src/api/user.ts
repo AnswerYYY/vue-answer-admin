@@ -9,18 +9,29 @@ export type LoginResult = ApiResponseData<{
   expires: Date
 }>
 
+export const userUrl = {
+  getUserInfo: '/api/getUserInfo',
+  login: '/login',
+  refreshToken: '/refreshToken',
+  expireToken: '/expireToken'
+}
+
 export const getUserInfo = () => {
-  return http.request<ApiResponseData<any>>({
-    method: 'get',
-    url: '/api/getUserInfo'
-  })
+  return http.get<ApiResponseData<any>>(userUrl.getUserInfo)
+}
+
+export const userExpireToken = () => {
+  return http.get<ApiResponseData<any>>(userUrl.expireToken)
 }
 
 /** 登录 */
 export const userLogin = (data: object) => {
-  return http.request<LoginResult>({
-    method: 'post',
-    url: '/login',
-    data
+  return http.post<LoginResult>(userUrl.login, data, {
+    noAuth: true
+  })
+}
+export const userRefreshToken = (data: { refreshToken: string }) => {
+  return http.post<LoginResult>(userUrl.refreshToken, data, {
+    noError: true
   })
 }

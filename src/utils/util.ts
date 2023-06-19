@@ -23,3 +23,12 @@ export function isEmpty(value: any): boolean {
   }
   return false
 }
+
+export function converToUrl(requestParams: object): string {
+  const params: any[] = []
+  Object.entries(requestParams).forEach(([key, value]) => {
+    const param = key + '=' + value
+    params.push(param)
+  })
+  return '?' + params.join('&')
+}

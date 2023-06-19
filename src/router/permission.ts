@@ -4,9 +4,7 @@ import { useUserStoreHook } from '@/store/modules/user'
 import { isEmpty } from '@/utils/util'
 import { usePermissionStoreHook } from '@/store/modules/permission'
 import { treeConvertToArr } from './utils'
-
-/** 登录页面 */
-const loginPath = '/login'
+import { loginPath } from '@/config'
 
 /** 路由白名单 */
 const allowList = [loginPath]

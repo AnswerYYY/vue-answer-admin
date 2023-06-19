@@ -71,9 +71,9 @@
       padding: 0 15px 0 0;
       background-color: #191a20;
       border-bottom: 1px solid var(--el-border-color-light);
-      .icon {
-        color: #e5eaf3 !important;
-      }
+      // .icon {
+      //   color: #e5eaf3 !important;
+      // }
       .logo {
         width: 210px;
         margin-right: 30px;
@@ -85,7 +85,7 @@
         .logo-text {
           font-size: 21.5px;
           font-weight: bold;
-          color: #dadada;
+          color: var(--el-menu-text-color);
           white-space: nowrap;
         }
       }
@@ -113,6 +113,11 @@
             background-color: var(--el-color-primary) !important;
             border-bottom-color: var(--el-color-primary) !important;
           }
+        }
+      }
+      .header-right {
+        .icon {
+          color: var(--el-menu-text-color);
         }
       }
     }

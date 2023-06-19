@@ -3,7 +3,7 @@ export default [
   {
     url: '/api/getUserInfo',
     method: 'get',
-    response: () => {
+    response: ({ body }) => {
       return {
         code: 200,
         message: '请求成功！',
@@ -18,34 +18,7 @@ export default [
           mobile_phone: '@phone',
           email: '@email',
           region: '@region',
-          roles: ['admin', 'common']
-        }
-      }
-    }
-  },
-  {
-    url: '/login',
-    method: 'post',
-    response: ({ body }) => {
-      if (body.username === 'admin') {
-        return {
-          code: 200,
-          message: '请求成功',
-          data: {
-            accessToken: 'eyJhbGciOiJIUzUxMiJ9.admin',
-            refreshToken: 'eyJhbGciOiJIUzUxMiJ9.adminRefresh',
-            expires: '2023/10/30 00:00:00'
-          }
-        }
-      } else {
-        return {
-          code: 200,
-          message: '请求成功',
-          data: {
-            accessToken: 'eyJhbGciOiJIUzUxMiJ9.common',
-            refreshToken: 'eyJhbGciOiJIUzUxMiJ9.commonRefresh',
-            expires: '2023/10/30 00:00:00'
-          }
+          roles: body.username === 'admin' ? ['admin', 'common'] : ['admin', 'common']
         }
       }
     }

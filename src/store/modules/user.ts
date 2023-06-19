@@ -1,6 +1,6 @@
 import { store } from '@/store'
 import { defineStore } from 'pinia'
-import { LoginResult, getUserInfo, userLogin } from '@/api/user'
+import { LoginResult, getUserInfo, userLogin, userRefreshToken } from '@/api/user'
 import { UserState } from './types'
 import piniaPersistConfig from '@/config/piniaPersist'
 
@@ -58,6 +58,27 @@ export const useUserStore = defineStore('user', {
           })
           .catch((error) => {
             reject(error)
+          })
+      })
+    },
+    refreshTokenApi() {
+      return new Promise<LoginResult>((resolve, reject) => {
+        userRefreshToken({
+          refreshToken: this.refreshToken as string
+        })
+          .then((res) => {
+            if (res.code === 200) {
+              const {
+                data: { accessToken, refreshToken }
+              } = res
+              this.SET_TOKEN(accessToken, refreshToken)
+              resolve(res)
+            } else {
+              reject(res.message)
+            }
+          })
+          .catch((err) => {
+            reject(err)
           })
       })
     },
