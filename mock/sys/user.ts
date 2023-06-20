@@ -3,7 +3,7 @@ export default [
   {
     url: '/api/getUserInfo',
     method: 'get',
-    response: ({ body }) => {
+    response: ({ headers }) => {
       return {
         code: 200,
         message: '请求成功！',
@@ -18,7 +18,7 @@ export default [
           mobile_phone: '@phone',
           email: '@email',
           region: '@region',
-          roles: body.username === 'admin' ? ['admin', 'common'] : ['admin', 'common']
+          roles: headers.authorization.indexOf('Admin') !== -1 ? ['admin', 'common'] : ['common']
         }
       }
     }

@@ -7,12 +7,13 @@ export default [
     method: 'post',
     response: ({ body }) => {
       if (body.refreshToken) {
+        const role = body.refreshToken.indexOf('Admin') ? 'newAdmin' : 'newCommon'
         return {
           code: 200,
           messgae: 'Token刷新成功',
           data: {
-            accessToken: 'eyJhbGciOiJIUzUxMiJ9.newAdmin',
-            refreshToken: 'eyJhbGciOiJIUzUxMiJ9.newAdminRefresh',
+            accessToken: `eyJhbGciOiJIUzUxMiJ9.${role}`,
+            refreshToken: `eyJhbGciOiJIUzUxMiJ9.${role}Refresh`,
             expires: '2023/10/30 23:59:59'
           }
         }
@@ -29,7 +30,7 @@ export default [
     url: '/expireToken',
     method: 'get',
     response: ({ headers }) => {
-      if (headers.authorization === 'eyJhbGciOiJIUzUxMiJ9.newAdmin') {
+      if (headers.authorization.indexOf('new') !== -1) {
         return { code: 200, messgae: '', data: {} }
       }
       return { code: 401, messgae: 'token过期', data: {} }

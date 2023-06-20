@@ -9,8 +9,8 @@ export default [
           code: 200,
           message: '请求成功',
           data: {
-            accessToken: 'eyJhbGciOiJIUzUxMiJ9.admin',
-            refreshToken: 'eyJhbGciOiJIUzUxMiJ9.adminRefresh',
+            accessToken: 'eyJhbGciOiJIUzUxMiJ9.Admin',
+            refreshToken: 'eyJhbGciOiJIUzUxMiJ9.AdminRefresh',
             expires: '2023/10/30 00:00:00'
           }
         }
@@ -19,8 +19,8 @@ export default [
           code: 200,
           message: '请求成功',
           data: {
-            accessToken: 'eyJhbGciOiJIUzUxMiJ9.common',
-            refreshToken: 'eyJhbGciOiJIUzUxMiJ9.commonRefresh',
+            accessToken: 'eyJhbGciOiJIUzUxMiJ9.Common',
+            refreshToken: 'eyJhbGciOiJIUzUxMiJ9.CommonRefresh',
             expires: '2023/10/30 00:00:00'
           }
         }
