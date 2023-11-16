@@ -2,13 +2,13 @@
   <template v-for="menu in formattMenus" :key="menu.path">
     <el-sub-menu v-if="menu.children?.length && menu.children?.length >= 1" :index="menu.path">
       <template #title>
-        <Icon :name="menu.meta?.icon" size="20" />
+        <Icon v-if="menu.meta?.icon" :name="menu.meta.icon" size="20" />
         <span>{{ menu.meta?.title }}</span>
       </template>
       <SubMenu :menus="menu.children" />
     </el-sub-menu>
     <el-menu-item v-else :index="menu.path" :key="menu.path">
-      <Icon :name="menu.meta?.icon" size="20" />
+      <Icon v-if="menu.meta?.icon" :name="menu.meta.icon" size="20" />
       <template #title>
         {{ menu.meta?.title }}
       </template>

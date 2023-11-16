@@ -1,3 +1,7 @@
 import mitt from 'mitt'
-const mittBUs = mitt()
+type Events = {
+  openSettingDrawer: boolean
+  refreshPage: boolean
+}
+const mittBUs = mitt<Events>()
 export default mittBUs

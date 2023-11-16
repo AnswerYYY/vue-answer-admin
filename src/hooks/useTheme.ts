@@ -59,7 +59,7 @@ const useTheme = () => {
     changePrimary(useSettingStoreHook().primaryColor)
     setAsideTheme()
   }
-  const changePrimary = (color: string) => {
+  const changePrimary = (color: string | null) => {
     if (!color) {
       color = default_primary
     }

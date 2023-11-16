@@ -18,12 +18,17 @@ import directives from '@/directives'
 // 通用样式
 import '@/styles/index.scss'
 
+// 全局组件
+import { pageHeaderWrapper } from '@/components'
+
 const app = createApp(App)
 
 // 注册icon
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)
 }
+
+app.component('PageHeaderWrapper', pageHeaderWrapper)
 
 // 挂载pinia
 setupStore(app)

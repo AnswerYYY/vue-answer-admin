@@ -2,7 +2,7 @@
   <div class="card-wrapper">
     <p>这是一个详情页</p>
     <el-alert :title="`当前页面：${route.fullPath}`" type="success" :closable="false" />
-    <el-input v-model="input" placeholder="测试缓存" size="normal" clearable />
+    <el-input v-model="input" placeholder="测试缓存" clearable />
   </div>
 </template>
 

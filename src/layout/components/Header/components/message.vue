@@ -24,12 +24,12 @@
         </el-tab-pane>
         <el-tab-pane label="消息(0)" name="message">
           <el-scrollbar height="284px">
-            <el-empty image-size="80" description="暂无消息" />
+            <el-empty :image-size="80" description="暂无消息" />
           </el-scrollbar>
         </el-tab-pane>
         <el-tab-pane label="代办(0)" name="work">
           <el-scrollbar height="284px">
-            <el-empty image-size="80" description="暂无代办" />
+            <el-empty :image-size="80" description="暂无代办" />
           </el-scrollbar>
         </el-tab-pane>
       </el-tabs>

@@ -155,8 +155,8 @@
 
   const visible = ref(false)
 
-  mittBus.on('openSettingDrawer', () => {
-    visible.value = true
+  mittBus.on('openSettingDrawer', (e) => {
+    visible.value = e
   })
 
   const {
@@ -182,7 +182,7 @@
   const handleAllKeepAlive = () => {
     useKeepAliveStoreHook().setKeepAliveNames()
   }
-  const handleSetAsideTheme = (e: boolean) => {
+  const handleSetAsideTheme = (e: any) => {
     setSettings('asideInverted', e)
     setAsideTheme()
   }

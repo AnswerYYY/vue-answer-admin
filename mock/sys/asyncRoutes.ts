@@ -67,7 +67,8 @@ const threeRouter = {
       path: '/menu/menu2',
       name: 'Menu2',
       meta: {
-        title: '菜单2'
+        title: '菜单2',
+        alwaysShow: true
       },
       children: [
         {

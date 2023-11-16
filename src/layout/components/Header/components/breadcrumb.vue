@@ -10,7 +10,7 @@
           <Icon
             size="18px"
             class="breadcrumb-icon"
-            v-show="item.meta.icon && breadcrumbIcon"
+            v-if="item.meta.icon && breadcrumbIcon"
             :name="item.meta.icon"
           />
           <span class="breadcrumb-text">{{ item.meta.title }}</span>

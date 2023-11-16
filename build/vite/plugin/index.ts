@@ -6,9 +6,11 @@ import { svgBuilder } from '../../../src/components/icon/svg/index'
 import viteBuildInfo from './info'
 export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
   const vitePlugins: (PluginOption | PluginOption[])[] = [
-    // have to
-    vue(),
-    // have to
+    vue({
+      script: {
+        // propsDestructure: true //解构props
+      }
+    }),
     vueJsx(),
     viteBuildInfo(),
     svgBuilder('./src/assets/icons/')

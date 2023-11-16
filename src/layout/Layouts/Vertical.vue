@@ -36,6 +36,8 @@
   import { useRoute } from 'vue-router'
   const { isCollapse } = storeToRefs(useSettingStoreHook())
   const menus = usePermissionStoreHook().completeMenus
+  console.log(menus)
+
   const route = useRoute()
   const activeMenu = computed(
     () => (route.meta.activeMenu ? route.meta.activeMenu : route.path) as string

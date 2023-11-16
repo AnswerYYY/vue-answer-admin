@@ -123,7 +123,7 @@
           margin: 0;
           .el-tabs__nav-wrap {
             position: absolute;
-            width: calc(100% - 110px);
+            width: calc(100% - 48px);
             .el-tabs__nav {
               display: flex;
               border: none;
